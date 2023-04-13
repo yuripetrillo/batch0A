@@ -1,5 +1,12 @@
 package com.yuripe.batchType0A.batchprocessing.Configuration;
 
+import java.beans.PropertyEditorSupport;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+
 import javax.sql.DataSource;
 
 import org.springframework.batch.core.Job;
@@ -19,6 +26,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import com.yuripe.batchType0A.Mapper.PolicyMapper;
 import com.yuripe.batchType0A.batchprocessing.Model.InsurancePolicy;
 import com.yuripe.batchType0A.batchprocessing.Processor.PolicyItemProcessor;
 
@@ -28,14 +36,19 @@ public class BatchConfiguration {
 	@Bean
 	public FlatFileItemReader<InsurancePolicy> reader() {
 	  return new FlatFileItemReaderBuilder<InsurancePolicy>()
-	    .name("personItemReader")
+	    .name("policyItemReader")
 	    .resource(new ClassPathResource("sample-data.csv"))
+	    .targetType(InsurancePolicy.class)
 	    .delimited()
-	    .names(new String[]{"firstName", "lastName"})
-	    .fieldSetMapper(new BeanWrapperFieldSetMapper<InsurancePolicy>() {{
+	    .delimiter(",")
+	    .names(new String[]{"contractor_customer_code", "effective_date", "expire_date", "insured_customer_code", "policy_number", "state"})
+	    .customEditors(Collections.singletonMap(Date.class, new DatePropertyEditor()))
+	    /*.fieldSetMapper(new BeanWrapperFieldSetMapper<InsurancePolicy>() {{
 	      setTargetType(InsurancePolicy.class);
-	    }})
+	      setCustomEditors(Collections.singletonMap(Date.class, new DatePropertyEditor()));
+	    }})*/
 	    .build();
+	    
 	}
 
 	@Bean
@@ -47,7 +60,7 @@ public class BatchConfiguration {
 	public JdbcBatchItemWriter<InsurancePolicy> writer(DataSource dataSource) {
 	  return new JdbcBatchItemWriterBuilder<InsurancePolicy>()
 	    .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-	    .sql("INSERT INTO people (first_name, last_name) VALUES (:firstName, :lastName)")
+	    .sql("INSERT INTO BATCH.policy (contractor_customer_code, effective_date, expire_date, insured_customer_code, policy_number, state) VALUES (:contractorCustomerCode, :effectiveDate, :expireDate, :insuredCustomerCode, :policyNumber, :state)")
 	    .dataSource(dataSource)
 	    .build();
 	}

@@ -17,7 +17,7 @@ import jakarta.persistence.UniqueConstraint;
 public class InsurancePolicy {
 
 	@Id
-    @Column(name = "carId")
+    @Column(name = "policyId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long policyId;
 	
@@ -107,6 +107,13 @@ public class InsurancePolicy {
 		this.state = state;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "{\n"
+				+ "	  \"data\": [{\n"
+				+ "	    \"expireDate\": " + "\"" + expireDate + "\"" + "," + "\"effectiveDate\": " + "\"" + effectiveDate + "\"" + "\n"
+						+ "	  }]\n"
+						+ "}";
+	}
 	
 }

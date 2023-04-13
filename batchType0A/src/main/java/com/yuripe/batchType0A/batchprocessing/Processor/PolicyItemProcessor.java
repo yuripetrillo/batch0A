@@ -12,14 +12,15 @@ public class PolicyItemProcessor implements ItemProcessor<InsurancePolicy, Insur
 
 	  @Override
 	  public InsurancePolicy process(final InsurancePolicy policy) throws Exception {
-	    final String firstName = policy.getContractorCustomerCode().toUpperCase();
+	    /*final String firstName = policy.getContractorCustomerCode().toUpperCase();
 	    final String lastName = policy.getInsuredCustomerCode().toUpperCase();
 
 	    final InsurancePolicy transformedPolicy = new InsurancePolicy(null, firstName, lastName, lastName, null, null, lastName);
+	     */
+		  
+	    log.info("Converting (" + policy + ")");
 
-	    log.info("Converting (" + policy + ") into (" + transformedPolicy + ")");
-
-	    return transformedPolicy;
+	    return policy;
 	  }
 
 }
