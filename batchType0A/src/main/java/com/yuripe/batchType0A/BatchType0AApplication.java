@@ -6,7 +6,7 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@EnableBatchProcessing
+@EnableBatchProcessing
 @SpringBootApplication
 public class BatchType0AApplication {
 

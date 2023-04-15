@@ -1,0 +1,7 @@
+[
+ {"policyId":null,"policyNumber":"P000810","contractorCustomerCode":"580","insuredCustomerCode":"850","effectiveDate":1751320800000,"expireDate":1703977200000,"state":"ACTIVE"},
+ {"policyId":null,"policyNumber":"P000820","contractorCustomerCode":"581","insuredCustomerCode":"851","effectiveDate":1751407200000,"expireDate":1703977200000,"state":"ACTIVE"},
+ {"policyId":null,"policyNumber":"P000830","contractorCustomerCode":"582","insuredCustomerCode":"852","effectiveDate":1751493600000,"expireDate":1703977200000,"state":"ACTIVE"},
+ {"policyId":null,"policyNumber":"P000840","contractorCustomerCode":"583","insuredCustomerCode":"853","effectiveDate":1751580000000,"expireDate":1703977200000,"state":"ACTIVE"},
+ {"policyId":null,"policyNumber":"P000850","contractorCustomerCode":"584","insuredCustomerCode":"854","effectiveDate":1751666400000,"expireDate":1703977200000,"state":"ACTIVE"}
+]
