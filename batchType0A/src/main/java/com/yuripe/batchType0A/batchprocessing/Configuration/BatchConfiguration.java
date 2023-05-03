@@ -1,53 +1,33 @@
 package com.yuripe.batchType0A.batchprocessing.Configuration;
 
-import java.beans.PropertyEditorSupport;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import javax.sql.DataSource;
-import org.springframework.batch.core.ItemWriteListener;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
-import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
-import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
-import org.springframework.batch.item.json.JacksonJsonObjectMarshaller;
-import org.springframework.batch.item.json.JsonFileItemWriter;
-import org.springframework.batch.item.json.builder.JsonFileItemWriterBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.transaction.PlatformTransactionManager;
-import com.yuripe.batchType0A.Listener.ItemFailureLoggerListener;
 import com.yuripe.batchType0A.Listener.JobCompletionNotificationListener;
 import com.yuripe.batchType0A.Listener.JobFailureNotificationListener;
 import com.yuripe.batchType0A.Listener.StepListener;
-import com.yuripe.batchType0A.Mapper.PolicyMapper;
-import com.yuripe.batchType0A.batchprocessing.Model.InsurancePolicy;
 import com.yuripe.batchType0A.batchprocessing.Processor.PolicyItemProcessor;
-import jakarta.persistence.EntityManager;
+import com.yuripe.normalizator.models.InsurancePolicy;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.PersistenceContext;
 
 @Configuration
 public class BatchConfiguration {

@@ -4,7 +4,7 @@ import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.validation.BindException;
 
-import com.yuripe.batchType0A.batchprocessing.Model.InsurancePolicy;
+import com.yuripe.normalizator.models.InsurancePolicy;
 
 public class PolicyMapper implements FieldSetMapper<InsurancePolicy> {
 

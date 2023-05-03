@@ -45,6 +45,7 @@ public class BatchController {
 		  if(!targetPath.equals("")) //add control, if target path is empty or target path is not target batch folder.
 			  return;
 	
+		  //log if batch start or not and who launched the batch (normalyp)
 	   this.jobLauncher.run(this.importUserJob, new JobParametersBuilder().addString("filePattern", filePattern).toJobParameters());
 	  }
 }
