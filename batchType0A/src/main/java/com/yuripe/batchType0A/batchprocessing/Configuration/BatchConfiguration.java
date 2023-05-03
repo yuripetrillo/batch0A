@@ -56,7 +56,7 @@ public class BatchConfiguration {
 	public FlatFileItemReader<InsurancePolicy> reader() {
 	  return new FlatFileItemReaderBuilder<InsurancePolicy>()
 	    .name("policyItemReader")
-	    .resource(new ClassPathResource(stepExecution.getPatternFromStepExecutionContext()))
+	    .resource(new ClassPathResource("/inputFiles/".concat(stepExecution.getPatternFromStepExecutionContext())))
 	    .targetType(InsurancePolicy.class)
 	    .delimited()
 	    .delimiter(";")

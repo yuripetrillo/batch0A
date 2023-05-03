@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.yuripe.core.library.services.FTPService;
+import com.yuripe.core.library.utility.SFTP;
 
 @RestController
 @RequestMapping("/api/batch0A")
@@ -28,7 +29,6 @@ public class BatchController {
 	  @PostMapping(
 	      value = "/launchJob/{targetPath}/{filePattern}",
 	      produces = MediaType.APPLICATION_JSON_VALUE)
-
 	  public void importFileAndRun(@PathVariable String targetPath, @PathVariable String filePattern) throws Exception {
 		  /*FtpClient ftpClient = new FtpClient("127.0.0.1", 21, "yuri", "adminftp");
 		  
@@ -42,7 +42,7 @@ public class BatchController {
 	      ftp.downloadFile(filePattern, Paths.get(this.getClass().getResource("/").getPath()).toString());
 		  //Get file from FTP server using core library*/
 		  
-		  if(!targetPath.equals("")) //add control, if target path is empty or target path is not target batch folder.
+		  if(targetPath.equals("")) //add control, if target path is empty or target path is not target batch folder.
 			  return;
 	
 		  //log if batch start or not and who launched the batch (normalyp)
