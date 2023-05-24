@@ -4,14 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
+import com.yuripe.batchType0A.batchprocessing.Model.InsurancePolicyCustom;
 import com.yuripe.normalizator.models.InsurancePolicy;
 
-public class PolicyItemProcessor implements ItemProcessor<InsurancePolicy, InsurancePolicy>{
+public class PolicyItemProcessor implements ItemProcessor<InsurancePolicyCustom, InsurancePolicyCustom>{
 
 	private static final Logger log = LoggerFactory.getLogger(PolicyItemProcessor.class);
 
 	  @Override
-	  public InsurancePolicy process(final InsurancePolicy policy) throws Exception {
+	  public InsurancePolicyCustom process(final InsurancePolicyCustom policy) throws Exception {
 	    /*final String firstName = policy.getContractorCustomerCode().toUpperCase();
 	    final String lastName = policy.getInsuredCustomerCode().toUpperCase();
 
